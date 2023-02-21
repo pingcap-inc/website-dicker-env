@@ -30,7 +30,8 @@ services:
       WORDPRESS_DB_PASSWORD: pingcap
       WORDPRESS_DB_NAME: pingcap_website_cn
     volumes:
-      - ${WEBSITE_CN_SRC}:/var/www/html/wp-content/themes/pingcap
+      - ${WEBSITE_CN_SRC}/pingcap-cn:/var/www/html/wp-content/themes/pingcap-cn
+      - ${WEBSITE_CN_SRC}/pingcap-cn/.htaccess:/var/www/html/.htaccess
       - ${WEBSITE_CN_SRC}/wp-content/plugins:/var/www/html/wp-content/plugins
       - ${WEBSITE_CN_SRC}/wp-content/uploads:/var/www/html/wp-content/uploads
 
