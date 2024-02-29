@@ -35,6 +35,19 @@ services:
       - ${WEBSITE_CN_SRC}/wp-content/plugins:/var/www/html/wp-content/plugins
       - ${WEBSITE_CN_SRC}/wp-content/uploads:/var/www/html/wp-content/uploads
 
+  WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: pingcap
+      WORDPRESS_DB_PASSWORD: pingcap
+      WORDPRESS_DB_NAME: pingcap_website_jp
+      # WORDPRESS_DB_HOST: ${TIDB_HOST}:${TIDB_PORT}
+      # WORDPRESS_DB_NAME: ${TIDB_DB_NAME}
+      # WORDPRESS_DB_PASSWORD: ${TIDB_PASSWORD}
+      # WORDPRESS_DB_USER: ${TIDB_USER}
+      # WORDPRESS_DB_COLLATE: utf8mb4_bin
+      # WORDPRESS_CONFIG_EXTRA: |
+      #   define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+      #   define('MYSQL_SSL_CA', '/etc/ssl/certs/ca-certificates.crt');
+
   mysql:
     container_name: pingcap_website_mysql
     image: mysql:5.7
@@ -60,3 +73,4 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/ssl:/etc/nginx/ssl
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd

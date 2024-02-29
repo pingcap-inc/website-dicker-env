@@ -4,3 +4,5 @@
 .env
 
 mysql/data/*
+
+ssl
