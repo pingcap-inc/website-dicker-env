@@ -60,7 +60,7 @@ services:
       - ${WEBSITE_JP_SRC}/wp-content/plugins:/var/www/html/wp-content/plugins
       - ${WEBSITE_JP_SRC}/wp-content/uploads:/var/www/html/wp-content/uploads
 
-  wordpress_jp_serverless:
+  jp_serverless:
     container_name: pingcap_website_jp_serveless
     image: wordpress:php8.1-apache
     restart: always
