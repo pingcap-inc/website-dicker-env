@@ -67,6 +67,7 @@ services:
     ports:
       - ${WEBSITE_JP_SERVERLESS_PORT}:80
     environment:
+      WORDPRESS_DEBUG: 1
       WORDPRESS_DB_HOST: ${TIDB_HOST}:${TIDB_PORT}
       WORDPRESS_DB_NAME: ${TIDB_DB_NAME}
       WORDPRESS_DB_PASSWORD: ${TIDB_PASSWORD}
@@ -80,6 +81,20 @@ services:
       - ${WEBSITE_JP_SRC}/pingcap-jp/.htaccess:/var/www/html/.htaccess
       - ${WEBSITE_JP_SRC}/wp-content/plugins:/var/www/html/wp-content/plugins
       - ${WEBSITE_JP_SRC}/wp-content/uploads:/var/www/html/wp-content/uploads
+  
+  jp_old:
+    container_name: pingcap_website_jp_old_env_php_apache
+    image: wordpress:php8.1-apache
+    restart: always
+    ports:
+      - ${WEBSITE_JP_OLD_PORT}:80
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: pingcap
+      WORDPRESS_DB_PASSWORD: pingcap
+      WORDPRESS_DB_NAME: pingcap_website_jp_old
+    volumes:
+      - ${WEBSITE_JP_OLD_SRC}/wp-content:/var/www/html/wp-content
 
   mysql:
     container_name: pingcap_website_mysql
