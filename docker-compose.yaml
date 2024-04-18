@@ -84,7 +84,7 @@ services:
   
   jp_old:
     container_name: pingcap_website_jp_old_env_php_apache
-    image: wordpress:php8.1-apache
+    image: wordpress:php7.3-apache
     restart: always
     ports:
       - ${WEBSITE_JP_OLD_PORT}:80
