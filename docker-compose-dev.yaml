@@ -62,11 +62,12 @@ services:
 
   jp_serverless:
     container_name: pingcap_website_jp_serveless
-    image: wordpress:php8.1-apache
+    image: wordpress:php7.4-apache
     restart: always
     ports:
       - ${WEBSITE_JP_SERVERLESS_PORT}:80
     environment:
+      WORDPRESS_DEBUG: 1
       WORDPRESS_DB_HOST: ${TIDB_HOST}:${TIDB_PORT}
       WORDPRESS_DB_NAME: ${TIDB_DB_NAME}
       WORDPRESS_DB_PASSWORD: ${TIDB_PASSWORD}

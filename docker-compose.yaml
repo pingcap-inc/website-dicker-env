@@ -62,7 +62,7 @@ services:
 
   jp_serverless:
     container_name: pingcap_website_jp_serveless
-    image: wordpress:php8.1-apache
+    image: wordpress:php7.4-apache
     restart: always
     ports:
       - ${WEBSITE_JP_SERVERLESS_PORT}:80
